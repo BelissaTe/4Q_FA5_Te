@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Q_FA5_2_TE</title>
+</head>
+
+<body>
+<h2>Contacts List</h2>
+<label for="contactInput">Enter Name:</label>
+<input type="text" id="contactInput">
+<button onclick="addContact()">Add</button>
+<button onclick="removeContact()">Remove</button>
+<p id="contactList"></p>
+
+<script>
+    let contacts = [];
+
+    function addContact() {
+        const input = document.getElementById("contactInput").value.trim();
+        if (input !== "") {
+            if (contacts.length === 7) {
+                contacts.shift(); // Remove the first contact if there are already 7
+            }
+            contacts.push(input); // Add the new contact
+            displayContacts();
+        }
+        document.getElementById("contactInput").value = ""; // Clear the input field
+    }
+
+    function removeContact() {
+        if (contacts.length > 0) {
+            contacts.pop(); // Remove the last contact
+            displayContacts();
+        }
+    }
+
+    function displayContacts() {
+        const contactList = document.getElementById("contactList");
+        contactList.innerHTML = "<strong>Contacts:</strong><br>";
+        contacts.forEach(contact => {
+            contactList.innerHTML += contact + " ";
+        });
+    }
+</script>
+</body>
+</html>

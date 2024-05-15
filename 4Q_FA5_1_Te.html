@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Q_FA5_1_TE</title>
+</head>
+
+<body>
+    <h2>Shape Generator</h2>
+<script>
+    function isNumeric(num) {
+        return !isNaN(num);
+    }
+
+    function generateShape() {
+        let userInput;
+        do {
+            userInput = prompt("Please enter a number:");
+        } while (!isNumeric(userInput));
+        
+        const num = parseInt(userInput);
+        document.getElementById("numberInputted").innerText = "Number inputted: " + num;
+
+        if (num % 2 !== 0) {
+            // Print rectangle
+            let output = "";
+            for (let i = num; i >= 1; i--) {
+                for (let j = num; j >= 1; j--) {
+                    output += i + " ";
+                }
+                output += "<br>";
+            }
+            document.getElementById("output").innerHTML = output;
+        } else {
+            // Print triangle
+            let output = "";
+            for (let i = num; i >= 1; i--) {
+                for (let j = i; j >= 1; j--) {
+                    output += i + " ";
+                }
+                output += "<br>";
+            }
+            document.getElementById("output").innerHTML = output;
+        }
+    }
+</script>
+
+    <button onclick="generateShape()">Prompt Asking User for Number</button>
+    <p id="numberInputted"></p>
+    <div id="output"></div>
+</body>
+</html>
